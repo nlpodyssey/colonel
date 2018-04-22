@@ -14,9 +14,10 @@
 # limitations under the License.
 
 import unittest
+import colonel
 
 
 class TestColonel(unittest.TestCase):
 
     def test_true(self):
-        self.assertTrue(True)
+        self.assertEqual('Bar', colonel.example_function('Baz'))
