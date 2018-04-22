@@ -13,3 +13,8 @@ jobs:
       after_success:
         - codecov
         - coveralls
+    - install:
+        - pip install -r requirements.txt
+        - pip install -r requirements-dev.txt
+      script: flake8
+
