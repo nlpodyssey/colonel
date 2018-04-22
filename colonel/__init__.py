@@ -13,9 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Colonel - a Python 3 library for handling CoNLL data formats"""
 
-def example_function(x):
-    print(x)
-    if x:
+
+def example_function(something):
+    """Example function."""
+    print(something)
+    if something:
         print('Foo')
     return 'Bar'
