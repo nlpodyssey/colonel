@@ -10,3 +10,4 @@ script:
   - coverage run -m unittest
 after_success:
   - codecov
+  - coveralls
