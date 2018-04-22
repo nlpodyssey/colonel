@@ -16,8 +16,11 @@
 """Colonel - a Python 3 library for handling CoNLL data formats"""
 
 
-def example_function(something):
-    """Example function."""
+def example_function(something: str) -> str:
+    """Example function.
+
+    :param something: Just something...
+    """
     print(something)
     if something:
         print('Foo')
