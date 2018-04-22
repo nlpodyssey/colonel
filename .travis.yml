@@ -3,13 +3,13 @@ python:
   - "3.6"
 git:
   depth: false
-install:
-  - pip install -r requirements.txt
-  - pip install -r requirements-dev.txt
-  - pip install codecov
-  - pip install coveralls
-script:
-  - coverage run -m unittest
-after_success:
-  - codecov
-  - coveralls
+jobs:
+  include:
+    - install:
+        - pip install -r requirements.txt
+        - pip install codecov
+        - pip install coveralls
+      script: coverage run -m unittest
+      after_success:
+        - codecov
+        - coveralls
