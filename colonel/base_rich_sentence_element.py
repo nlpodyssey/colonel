@@ -32,7 +32,7 @@ class BaseRichSentenceElement(BaseSentenceElement):
     elements, such as the *(multiword) tokens*.
     """
 
-    __slots__ = ('lemma', 'upos', 'xpos', 'feats', 'head', 'deprel', 'deps')
+    __slots__ = ('lemma', 'upos', 'xpos', 'feats', 'deps')
 
     def __init__(
             self,
