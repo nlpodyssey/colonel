@@ -84,4 +84,7 @@ class BaseRichSentenceElement(BaseSentenceElement):
         An instance of type :class:`.BaseRichSentenceElement` is **always**
         considered valid, independently from any of its attributes' value.
         """
-        super(BaseRichSentenceElement, self).is_valid()
+        # this method is overridden for the sole purpose of customizing
+        # the documentation.
+        # pylint: disable=useless-super-delegation
+        return super(BaseRichSentenceElement, self).is_valid()
