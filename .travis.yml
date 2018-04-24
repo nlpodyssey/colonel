@@ -19,3 +19,6 @@ jobs:
     - install:
         - pip install -r requirements-dev.txt
       script: pylint colonel
+    - install:
+        - pip install -r requirements-dev.txt
+      script: mypy -p colonel
