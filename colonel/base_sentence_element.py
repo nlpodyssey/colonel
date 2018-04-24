@@ -27,12 +27,12 @@ class BaseSentenceElement:
             form: Optional[str] = None,
             misc: Optional[str] = None
     ) -> None:
-        #: Form of the word.
+        #: Word form or punctuation symbol.
         #:
         #: It is compatible with *CoNLL-U* ``FORM`` field.
         self.form: Optional[str] = form
 
-        #: Miscellaneous word's annotations.
+        #: Any other annotation.
         #:
         #: It is compatible with *CoNLL-U* ``MISC`` field.
         self.misc: Optional[str] = misc
