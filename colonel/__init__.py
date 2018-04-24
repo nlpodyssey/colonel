@@ -14,14 +14,3 @@
 # limitations under the License.
 
 """Colonel - a Python 3 library for handling CoNLL data formats"""
-
-
-def example_function(something: str) -> str:
-    """Example function.
-
-    :param something: Just something...
-    """
-    print(something)
-    if something:
-        print('Foo')
-    return 'Bar'
