@@ -1,4 +1,6 @@
 
+"""Module providing the :class:`.UposTag` enumeration."""
+
 from enum import Enum, auto
 
 __all__ = ['UposTag']
