@@ -20,17 +20,17 @@ from colonel.base_sentence_element import BaseSentenceElement
 class TestBaseSentenceElement(unittest.TestCase):
 
     def test_init_form(self):
-        word = BaseSentenceElement(form='Foo')
-        self.assertEqual('Foo', word.form)
+        element = BaseSentenceElement(form='Foo')
+        self.assertEqual('Foo', element.form)
 
     def test_init_misc(self):
-        word = BaseSentenceElement(misc='Foo')
-        self.assertEqual('Foo', word.misc)
+        element = BaseSentenceElement(misc='Foo')
+        self.assertEqual('Foo', element.misc)
 
     def test_is_valid_true_with_no_values_set(self):
-        word = BaseSentenceElement()
-        self.assertTrue(word.is_valid())
+        element = BaseSentenceElement()
+        self.assertTrue(element.is_valid())
 
     def test_is_valid_true_with_all_values_set(self):
-        word = BaseSentenceElement(form='Foo', misc='Bar')
-        self.assertTrue(word.is_valid())
+        element = BaseSentenceElement(form='Foo', misc='Bar')
+        self.assertTrue(element.is_valid())
