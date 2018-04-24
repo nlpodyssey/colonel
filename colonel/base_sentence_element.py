@@ -22,7 +22,11 @@ class BaseSentenceElement:
 
     __slots__ = ('form', 'misc')
 
-    def __init__(self, form: Optional[str] = None, misc: Optional[str] = None):
+    def __init__(
+            self,
+            form: Optional[str] = None,
+            misc: Optional[str] = None
+    ) -> None:
         #: Form of the word.
         #:
         #: It is compatible with *CoNLL-U* ``FORM`` field.
