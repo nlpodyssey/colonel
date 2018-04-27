@@ -78,7 +78,7 @@ class BaseRichSentenceElement(BaseSentenceElement):
         #: project.
         self.deps: Optional[Any] = deps
 
-    def is_valid(self):
+    def is_valid(self): # pylint disable=no-self-use
         """Returns whether or not the object can be considered valid,
         however ignoring the context of the sentence in which the word
         itself is possibly inserted.

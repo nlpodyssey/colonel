@@ -50,8 +50,7 @@ class BaseSentenceElement:
         #: It is compatible with *CoNLL-U* ``MISC`` field.
         self.misc: Optional[str] = misc
 
-    @staticmethod
-    def is_valid() -> bool:
+    def is_valid(self) -> bool:  # pylint: disable=no-self-use
         """Returns whether or not the object can be considered valid,
         however ignoring the context of the sentence in which the word
         itself is possibly inserted.
