@@ -1,10 +1,12 @@
 
 import unittest
 from typing import Generator
+
 from colonel.sentence import Sentence
 from colonel.word import Word
 from colonel.emptynode import EmptyNode
 from colonel.multiword import Multiword
+from colonel.base_sentence_element import BaseSentenceElement
 
 
 class TestSentence(unittest.TestCase):
@@ -341,5 +343,17 @@ class TestSentence(unittest.TestCase):
         sentence = Sentence([
             Word(index=1, head=2),
             Word(index=2, head=0),
+        ])
+        self.assertTrue(sentence.is_valid())
+
+    def test_is_valid_on_a_sentence_with_foreign_elements(self):
+        class Foo(BaseSentenceElement):
+            pass
+
+        sentence = Sentence([
+            Word(index=1, head=2),
+            Foo(form='Bar'),
+            Word(index=2, head=0),
+            Foo(form='Baz'),
         ])
         self.assertTrue(sentence.is_valid())
