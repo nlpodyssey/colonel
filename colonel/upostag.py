@@ -14,7 +14,7 @@ class UposTag(Enum):
 
     See also the ``UPOS`` field in the *CoNLL-U* format.
 
-    **Note:** always refer to the name of each member; each value is
+    **Note:** always refer to the name of each member; values are
     automatically generated and thus **MUST** be considered opaque.
     """
 
