@@ -59,7 +59,7 @@ class TestBaseRichSentenceElement(unittest.TestCase):
             upos=UposTag.X,
             xpos='XPOS',
             feats={'foo': 'bar'},
-            misc='Misc',
-            deps={'baz': 'qux'}
+            deps={'baz': 'qux'},
+            misc='Misc'
         )
         self.assertTrue(element.is_valid())
