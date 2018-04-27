@@ -40,13 +40,13 @@ class TestBaseRichSentenceElement(unittest.TestCase):
         element = BaseRichSentenceElement(feats={'foo': 'bar'})
         self.assertEqual({'foo': 'bar'}, element.feats)
 
-    def test_init_misc(self):
-        element = BaseRichSentenceElement(misc='Foo')
-        self.assertEqual('Foo', element.misc)
-
     def test_init_deps(self):
         element = BaseRichSentenceElement(deps={'foo': 'bar'})
         self.assertEqual({'foo': 'bar'}, element.deps)
+
+    def test_init_misc(self):
+        element = BaseRichSentenceElement(misc='Foo')
+        self.assertEqual('Foo', element.misc)
 
     def test_is_valid_true_with_no_values_set(self):
         element = BaseRichSentenceElement()
