@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Module providing the :class:`.BaseSentenceElement` class."""
+"""Module providing the :class:`.BaseRichSentenceElement` class."""
 
 from typing import Optional, Any
 from colonel.base_sentence_element import BaseSentenceElement
@@ -26,10 +26,10 @@ class BaseRichSentenceElement(BaseSentenceElement):
     """Abstract class containing basic information in common with some specific
     elements being part of a sentence.
 
-    It is compliant with the *CoNLL-U* format, so that it provides a common
-    foundation for elements of type *word* and *empty nodes*, which can be
-    made up of a richer set of fields in comparison to other more minimal
-    elements, such as the *(multiword) tokens*.
+    It is compliant with the *CoNLL-U* format, in the sense that it provides
+    a common foundation for elements of type *word* and *empty nodes*, which
+    can be made up of a richer set of fields in comparison to other elements,
+    such as the *(multiword) tokens*.
     """
 
     __slots__ = ('lemma', 'upos', 'xpos', 'feats', 'deps')
@@ -65,7 +65,8 @@ class BaseRichSentenceElement(BaseSentenceElement):
         #:
         #: It is compatible with *CoNLL-U* ``FEATS`` field.
         #:
-        #: You are free to use any kind of value suitable for your project.
+        #: You are free to assign to it any kind of value suitable for your
+        #: project.
         self.feats: Optional[Any] = feats
 
         #: Enhanced dependency graph, usually in the form of a list of
@@ -73,16 +74,19 @@ class BaseRichSentenceElement(BaseSentenceElement):
         #:
         #: It is compatible with *CoNLL-U* ``DEPS`` field.
         #:
-        #: You are free to use any kind of value suitable for your project.
+        #: You are free to assign to it any kind of value suitable for your
+        #: project.
         self.deps: Optional[Any] = deps
 
     def is_valid(self):
         """Returns whether or not the object can be considered valid,
-        without considering the context of the sentence in which the word
+        however ignoring the context of the sentence in which the word
         itself is possibly inserted.
 
-        An instance of type :class:`.BaseRichSentenceElement` is **always**
-        considered valid, independently from any of its attributes' value.
+        An instance of type :class:`.BaseRichSentenceElement` is *always*
+        considered valid, independently from any value of its attributes (it
+        doesn't provide any additional check to the overridden superclass
+        method).
         """
         # this method is overridden for the sole purpose of customizing
         # the documentation.
