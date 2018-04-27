@@ -8,8 +8,8 @@ colonel
 .. image:: https://codecov.io/gh/nlpodyssey/colonel/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/nlpodyssey/colonel
 
-.. image:: https://coveralls.io/repos/github/nlpodyssey/colonel/badge.svg?branch=Initialize-project
-  :target: https://coveralls.io/github/nlpodyssey/colonel?branch=Initialize-project
+.. image:: https://coveralls.io/repos/github/nlpodyssey/colonel/badge.svg?branch=master
+  :target: https://coveralls.io/github/nlpodyssey/colonel?branch=master
 
 .. image:: https://readthedocs.org/projects/colonel/badge/?version=latest
   :target: http://colonel.readthedocs.io/en/latest/?badge=latest
