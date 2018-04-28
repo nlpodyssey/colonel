@@ -240,7 +240,7 @@ class ConlluLexerBuilder:
     def build(cls) -> Lexer:
         """Returns a *PLY* :class:`Lexer` instance for *CoNLL-U* processing.
 
-        The returned lexer mekes use of the rules defined by
+        The returned lexer makes use of the rules defined by
         :class:`ConlluLexerBuilder`.
         """
         return cls().lexer
