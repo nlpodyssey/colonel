@@ -47,7 +47,7 @@ class IllegalCharacterError(LexerError):
         self.column_number: int = ConlluLexerBuilder.find_column(token)
 
         super(IllegalCharacterError, self).__init__(
-            "Illegal character %s at (or sequence from) %s:%s" % \
+            "Illegal character %s at (or sequence from) %s:%s" %
             (repr(token.value[0]), self.line_number, self.column_number)
         )
 
