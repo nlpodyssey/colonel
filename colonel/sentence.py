@@ -269,3 +269,14 @@ class Sentence:
         element with the given *index*.
         """
         return any(word.index == index for word in self.words())
+
+    def to_conllu(self) -> str:
+        """Returns a *CoNLL-U* formatted representation of the sentence.
+
+        No validity check is performed on the sentence and its element;
+        elements and values not compatible with *CoNLL-U* format could lead to
+        an incorrect output value or raising of exceptions.
+        """
+        comments = ''.join(f'# {c}\n' for c in self.comments or [])
+        word_lines = ''.join(f'{e.to_conllu()}\n' for e in self.elements)
+        return f'{comments}{word_lines}\n'
