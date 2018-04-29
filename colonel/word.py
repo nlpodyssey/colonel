@@ -69,3 +69,23 @@ class Word(BaseRichSentenceElement):
         """
         return super(Word, self).is_valid() and \
             self.index is not None and self.index > 0
+
+    def to_conllu(self) -> str:
+        """Returns a *CoNLL-U* formatted representation of the element.
+
+        No validity check is performed on the attributes; values not compatible
+        with *CoNLL-U* format could lead to an incorrect output value or
+        raising of exceptions.
+        """
+        return '\t'.join([
+            str(self.index),
+            self.form or '_',
+            self.lemma or '_',
+            self.upos.name if self.upos else '_',
+            self.xpos or '_',
+            self._feats_to_conllu(),
+            str(self.head) if self.head is not None else '_',
+            self.deprel or '_',
+            self._deps_to_conllu(),
+            self.misc or '_'
+        ])
