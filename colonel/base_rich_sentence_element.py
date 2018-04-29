@@ -140,3 +140,10 @@ class BaseRichSentenceElement(BaseSentenceElement):
 
         raise NotImplementedError(
             f'Cannot transform to CoNLL-U DEPS of type {type(self.feats)}')
+
+    def to_conllu(self):
+        """Returns a *CoNLL-U* formatted representation of the element.
+
+        This method is expected to be overridden by each specific element.
+        """
+        raise NotImplementedError('.to_conllu() implementation missing')
