@@ -92,3 +92,51 @@ class BaseRichSentenceElement(BaseSentenceElement):
         # the documentation.
         # pylint: disable=useless-super-delegation
         return super(BaseRichSentenceElement, self).is_valid()
+
+    def _feats_to_conllu(self) -> str:
+        """Returns a *CoNLL-U*-compatible representation of :attr:`feats`.
+
+        If :attr:`feats` is not set (``None``), the indicator of empty field
+        ``'_'`` is returned, otherwise the method behaves differently
+        depending by the type of the attribute:
+        - when ``str``, the value is returned as it is;
+        - when ``tuple``, it **must** be shaped according to the same structure
+          built by :class:`colonel.conllu.lexer.Lexer`;
+        - any other type is currently not supported, so in that case a
+          :class:`NotImplementedError` is raised.
+        """
+
+        if not self.feats:
+            return '_'
+        elif isinstance(self.feats, str):
+            return self.feats
+        elif isinstance(self.feats, tuple):
+            return '|'.join(
+                f'{feat[0]}={",".join(feat[1])}' for feat in self.feats)
+
+        raise NotImplementedError(
+            f'Cannot transform to CoNLL-U FEATS of type {type(self.feats)}')
+
+    def _deps_to_conllu(self) -> str:
+        """Returns a *CoNLL-U*-compatible representation of :attr:`deps`.
+
+        If :attr:`deps` is not set (``None``), the indicator of empty field
+        ``'_'`` is returned, otherwise the method behaves differently
+        depending by the type of the attribute:
+        - when ``str``, the value is returned as it is;
+        - when ``tuple``, it **must** be shaped according to the same structure
+          built by :class:`colonel.conllu.lexer.Lexer`;
+        - any other type is currently not supported, so in that case a
+          :class:`NotImplementedError` is raised.
+        """
+
+        if not self.deps:
+            return '_'
+        elif isinstance(self.deps, str):
+            return self.deps
+        elif isinstance(self.deps, tuple):
+            return '|'.join(
+                f'{dep[0]}:{dep[1]}' for dep in self.deps)
+
+        raise NotImplementedError(
+            f'Cannot transform to CoNLL-U DEPS of type {type(self.feats)}')
