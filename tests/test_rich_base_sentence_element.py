@@ -64,6 +64,6 @@ class TestBaseRichSentenceElement(unittest.TestCase):
         )
         self.assertTrue(element.is_valid())
 
-    def to_conllu_is_not_implemented(self):
+    def test_to_conllu_is_not_implemented(self):
         with self.assertRaises(NotImplementedError):
             BaseRichSentenceElement().to_conllu()
