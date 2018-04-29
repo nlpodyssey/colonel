@@ -66,3 +66,23 @@ class EmptyNode(BaseRichSentenceElement):
         return super(EmptyNode, self).is_valid() and \
             self.main_index is not None and self.main_index >= 0 and \
             self.sub_index is not None and self.sub_index > 0
+
+    def to_conllu(self) -> str:
+        """Returns a *CoNLL-U* formatted representation of the element.
+
+        No validity check is performed on the attributes; values not compatible
+        with *CoNLL-U* format could lead to an incorrect output value or
+        raising of exceptions.
+        """
+        return '\t'.join([
+            f'{self.main_index}.{self.sub_index}',
+            self.form or '_',
+            self.lemma or '_',
+            self.upos.name if self.upos else '_',
+            self.xpos or '_',
+            self._feats_to_conllu(),
+            '_',  # Head
+            '_',  # DepRel
+            self._deps_to_conllu(),
+            self.misc or '_'
+        ])
