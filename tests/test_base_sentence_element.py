@@ -35,6 +35,6 @@ class TestBaseSentenceElement(unittest.TestCase):
         element = BaseSentenceElement(form='Foo', misc='Bar')
         self.assertTrue(element.is_valid())
 
-    def to_conllu_is_not_implemented(self):
+    def test_to_conllu_is_not_implemented(self):
         with self.assertRaises(NotImplementedError):
             BaseSentenceElement().to_conllu()
