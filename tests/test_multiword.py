@@ -75,3 +75,19 @@ class TestMultiword(unittest.TestCase):
             misc='Misc'
         )
         self.assertTrue(element.is_valid())
+
+    def test_to_conllu_of_invalid_sentence_with_no_attributes(self):
+        multiword = Multiword()
+        self.assertEqual(
+            'None-None\t_\t_\t_\t_\t_\t_\t_\t_\t_', multiword.to_conllu())
+
+    def test_to_conllu_of_sentence_with_all_attributes(self):
+        multiword = Multiword(
+            first_index=1,
+            last_index=2,
+            form='Form',
+            misc='Misc')
+
+        self.assertEqual(
+            '1-2\tForm\t_\t_\t_\t_\t_\t_\t_\tMisc',
+            multiword.to_conllu())
