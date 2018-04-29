@@ -357,3 +357,48 @@ class TestSentence(unittest.TestCase):
             Foo(form='Baz'),
         ])
         self.assertTrue(sentence.is_valid())
+
+    def test_to_conllu_with_meaningless_empty_sentence(self):
+        sentence = Sentence()
+        self.assertEqual('\n', sentence.to_conllu())
+
+    def test_to_conllu_with_meaningless_empty_sentence_with_comments(self):
+        sentence = Sentence(comments=['Foo', 'Bar'])
+        self.assertEqual('# Foo\n# Bar\n\n', sentence.to_conllu())
+
+    def test_to_conllu_with_many_elements_and_no_comments(self):
+        sentence = Sentence(
+            elements=[
+                Multiword(first_index=1, last_index=2, form="Foobar"),
+                Word(index=1, form='Foo'),
+                Word(index=2, form='bar'),
+                EmptyNode(main_index=2, sub_index=1, form='Baz')
+            ]
+        )
+        self.assertEqual(
+            '1-2\tFoobar\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '1\tFoo\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '2\tbar\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '2.1\tBaz\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '\n',
+            sentence.to_conllu())
+
+    def test_to_conllu_with_many_elements_and_comments(self):
+        sentence = Sentence(
+            comments=['Comment 1', 'Comment 2'],
+            elements=[
+                Multiword(first_index=1, last_index=2, form="Foobar"),
+                Word(index=1, form='Foo'),
+                Word(index=2, form='bar'),
+                EmptyNode(main_index=2, sub_index=1, form='Baz')
+            ]
+        )
+        self.assertEqual(
+            '# Comment 1\n'
+            '# Comment 2\n'
+            '1-2\tFoobar\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '1\tFoo\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '2\tbar\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '2.1\tBaz\t_\t_\t_\t_\t_\t_\t_\t_\n'
+            '\n',
+            sentence.to_conllu())
