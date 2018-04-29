@@ -78,15 +78,78 @@ class TestWord(unittest.TestCase):
 
     def test_is_valid_true_with_all_values_set(self):
         element = Word(
-                index=1,
-                form='Form',
-                lemma='Lemma',
-                upos=UposTag.X,
-                xpos='XPOS',
-                feats={'foo': 'bar'},
-                head=2,
-                deprel='DepRel',
-                misc='Misc',
-                deps={'baz': 'qux'}
+            index=1,
+            form='Form',
+            lemma='Lemma',
+            upos=UposTag.X,
+            xpos='XPOS',
+            feats={'foo': 'bar'},
+            head=2,
+            deprel='DepRel',
+            misc='Misc',
+            deps={'baz': 'qux'}
         )
         self.assertTrue(element.is_valid())
+
+    def test_to_conllu_of_invalid_sentence_with_no_attributes(self):
+        word = Word()
+        self.assertEqual('None\t_\t_\t_\t_\t_\t_\t_\t_\t_', word.to_conllu())
+
+    def test_to_conllu_of_sentence_with_all_attributes(self):
+        word = Word(
+            index=1,
+            form='Form',
+            lemma='Lemma',
+            upos=UposTag.X,
+            xpos='XPOS',
+            feats='Feat=Foo',
+            head=2,
+            deprel='DepRel',
+            deps='0:Bar',
+            misc='Misc')
+
+        self.assertEqual(
+            '1\tForm\tLemma\tX\tXPOS\tFeat=Foo\t2\tDepRel\t0:Bar\tMisc',
+            word.to_conllu())
+
+    def test_to_conllu_with_feats_as_str(self):
+        word = Word(index=1, feats='Foo=Bar|Baz=Qux')
+        self.assertEqual(
+            '1\t_\t_\t_\t_\tFoo=Bar|Baz=Qux\t_\t_\t_\t_',
+            word.to_conllu())
+
+    def test_to_conllu_with_feats_as_tuple(self):
+        word = Word(
+            index=1,
+            feats=(('Foo', ('Bar',)), ('Baz', ('Qux', 'Zet'))))
+
+        self.assertEqual(
+            '1\t_\t_\t_\t_\tFoo=Bar|Baz=Qux,Zet\t_\t_\t_\t_',
+            word.to_conllu())
+
+    def test_to_conllu_raises_error_with_unsupported_feats_type(self):
+        word = Word(feats=['Foo', 'Bar'])
+
+        with self.assertRaises(NotImplementedError):
+            word.to_conllu()
+
+    def test_to_conllu_with_deps_str(self):
+        word = Word(index=1, deps='1:Foo|2:Bar')
+        self.assertEqual(
+            '1\t_\t_\t_\t_\t_\t_\t_\t1:Foo|2:Bar\t_',
+            word.to_conllu())
+
+    def test_to_conllu_with_deps_tuple(self):
+        word = Word(
+            index=1,
+            deps=((1, 'Foo'), (2, 'Bar')))
+
+        self.assertEqual(
+            '1\t_\t_\t_\t_\t_\t_\t_\t1:Foo|2:Bar\t_',
+            word.to_conllu())
+
+    def test_to_conllu_raises_error_with_unsupported_deps_type(self):
+        word = Word(deps=[1, 'Foo'])
+
+        with self.assertRaises(NotImplementedError):
+            word.to_conllu()
