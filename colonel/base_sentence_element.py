@@ -59,3 +59,10 @@ class BaseSentenceElement:
         independently from any value of its attributes.
         """
         return True
+
+    def to_conllu(self):
+        """Returns a *CoNLL-U* formatted representation of the element.
+
+        This method is expected to be overridden by each specific element.
+        """
+        raise NotImplementedError('.to_conllu() implementation missing')

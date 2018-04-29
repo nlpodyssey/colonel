@@ -34,3 +34,7 @@ class TestBaseSentenceElement(unittest.TestCase):
     def test_is_valid_true_with_all_values_set(self):
         element = BaseSentenceElement(form='Foo', misc='Bar')
         self.assertTrue(element.is_valid())
+
+    def to_conllu_is_not_implemented(self):
+        with self.assertRaises(NotImplementedError):
+            BaseSentenceElement().to_conllu()
