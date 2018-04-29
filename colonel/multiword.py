@@ -70,3 +70,23 @@ class Multiword(BaseSentenceElement):
             self.first_index is not None and \
             self.last_index is not None and \
             0 < self.first_index < self.last_index
+
+    def to_conllu(self) -> str:
+        """Returns a *CoNLL-U* formatted representation of the element.
+
+        No validity check is performed on the attributes; values not compatible
+        with *CoNLL-U* format could lead to an incorrect output value or
+        raising of exceptions.
+        """
+        return '\t'.join([
+            f'{self.first_index}-{self.last_index}',
+            self.form or '_',
+            '_',  # Lemma
+            '_',  # UPOS
+            '_',  # XPOS
+            '_',  # Feats
+            '_',  # Head
+            '_',  # DepRel
+            '_',  # Deps
+            self.misc or '_'
+        ])
