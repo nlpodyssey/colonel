@@ -41,3 +41,17 @@ def parse(content: str) -> List[Sentence]:
     :return: list of parsed :class:`.Sentence` items
     """
     return ConlluParserBuilder.build().parse(content)
+
+
+def to_conllu(sentences: List[Sentence]) -> str:
+    """Serializes a list of sentences to a formatted *CoNLL-U* string.
+
+    This method simply concatenates the output of :meth:`.Sentence.to_conllu`
+    for each given sentence and do not perform any validity check;
+    sentences and elements not compatible with *CoNLL-U* format could lead to
+    an incorrect output value or raising of exceptions.
+
+    :param sentences: list of :class:`.Sentence` items
+    :return: a *CoNLL-U* formatted representation of the sentences
+    """
+    return ''.join(sentence.to_conllu() for sentence in sentences)
