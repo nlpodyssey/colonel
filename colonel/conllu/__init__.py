@@ -23,3 +23,21 @@ Lexer and parser classes are implemented taking advantage of the *PLY
 `PLY documentation <http://www.dabeaz.com/ply>`_ and from the
 `Lex & Yacc Page <http://dinosaur.compilertools.net/>`_.
 """
+
+from typing import List
+from colonel.sentence import Sentence
+from colonel.conllu.parser import ConlluParserBuilder
+
+
+def parse(content: str) -> List[Sentence]:
+    """Parses a *CoNLL-U* string content, returning a list of sentences.
+
+    :raise lexer.LexerError: (any specific subclass) in case of invalid input
+        breaking the rules of the *CoNLL-U* lexer
+    :raise parser.ParserError: (any specific subclass) in case of invalid input
+        breaking the rules of the *CoNLL-U* parser
+
+    :param content: *CoNLL-U* formatted string to be parsed
+    :return: list of parsed :class:`.Sentence` items
+    """
+    return ConlluParserBuilder.build().parse(content)
