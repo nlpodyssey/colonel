@@ -16,8 +16,9 @@
 import unittest
 from unittest.mock import patch, Mock
 
-from colonel.conllu import parse
+from colonel.conllu import parse, to_conllu
 from colonel.conllu.parser import ConlluParserBuilder
+from colonel.sentence import Sentence
 
 
 class TestConlluModule(unittest.TestCase):
@@ -34,3 +35,32 @@ class TestConlluModule(unittest.TestCase):
 
         parser.parse.assert_called_once_with(content)
         self.assertIs(result, actual_result)
+
+    def test_to_conllu_with_empty_array(self):
+        self.assertEqual('', to_conllu([]))
+
+    def test_to_conllu_with_one_sentence(self):
+        sentences = [
+            FakeSentence('Foo\n')
+        ]
+
+        self.assertEqual('Foo\n', to_conllu(sentences))
+
+    def test_to_conllu_with_meny_sentences(self):
+        sentences = [
+            FakeSentence('Foo\n'),
+            FakeSentence('Bar\n'),
+            FakeSentence('Baz\n')
+        ]
+
+        expected = 'Foo\nBar\nBaz\n'
+        self.assertEqual(expected, to_conllu(sentences))
+
+
+class FakeSentence(Sentence):
+    def __init__(self, fake_conllu):
+        super(FakeSentence, self).__init__()
+        self._fake_conllu = fake_conllu
+
+    def to_conllu(self):
+        return self._fake_conllu
