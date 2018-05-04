@@ -13,10 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This package provides modules to process *CoNLL-U* formatted string,
-providing a lexical analyzer (see :mod:`.lexer`) and a parser (see
-:mod:`.parser`) to transform the raw string input into related
-:class:`.Sentence` objects.
+"""This package provides methods and modules to process the *CoNLL-U* format.
+
+In most situations it's sufficient to make use of :func:`parse` and
+:func:`to_conllu` functions, without caring too much about the implementation
+under the hood.
+
+In more detail, this package provides a lexical analyzer (see :mod:`.lexer`)
+and a parser (see :mod:`.parser`) to transform the raw string input into
+related :class:`.Sentence` objects.
 
 Lexer and parser classes are implemented taking advantage of the *PLY
 (Python Lex-Yacc)* library; you can learn more from the
