@@ -61,7 +61,7 @@ class Multiword(BaseSentenceElement):
         however ignoring the context of the sentence in which the word
         itself is possibly inserted.
 
-        In compliance with the _CoNLL-U_ format, an instance of type
+        In compliance with the *CoNLL-U* format, an instance of type
         :class:`.Multiword` is considered valid only when :attr:`first_index`
         is set to a value greater than zero (``0``) **and**
         :attr:`last_index` is set to a value greater than :attr:`first_index`.
