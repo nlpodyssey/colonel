@@ -112,12 +112,12 @@ class Sentence:
         unexpected behaviours.
         """
         last_index = 0
-        for element in self.elements:
-            if isinstance(element, Multiword):
-                yield element
-                last_index = element.last_index
-            elif isinstance(element, Word) and element.index > last_index:
-                yield element
+        for item in self.elements:
+            if isinstance(item, Multiword):
+                yield item
+                last_index = item.last_index or 0
+            elif isinstance(item, Word) and (item.index or 0) > last_index:
+                yield item
 
     def is_valid(self) -> bool:
         """Returns whether or not the sentence is valid.
@@ -238,7 +238,7 @@ class Sentence:
 
         elif isinstance(elem, Multiword):
             return elem.first_index == index + 1 and \
-                   self._has_word_with_index(elem.last_index) and \
+                   self._has_word_with_index(elem.last_index or 0) and \
                    self._sequence_is_valid(position + 1, index)
 
         elif isinstance(elem, EmptyNode):
@@ -263,7 +263,7 @@ class Sentence:
         the sentence.
         """
         words = list(self.words())
-        last_index = words[-1].index
+        last_index = words[-1].index or 0
         return all(0 <= (word.head or 0) <= last_index for word in words)
 
     def _has_word_with_index(self, index: int) -> bool:
