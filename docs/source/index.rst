@@ -1,16 +1,8 @@
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
 
 .. include:: ../../README.rst
 
+.. toctree::
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   colonel
+   py-modindex
+   genindex
