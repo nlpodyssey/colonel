@@ -7,6 +7,7 @@ Submodules
 .. toctree::
 
    colonel.conllu.lexer
+   colonel.conllu.parser
 
 Module contents
 ---------------
