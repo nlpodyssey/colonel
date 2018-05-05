@@ -137,6 +137,7 @@ class Sentence:
           subclasses;
         - the ordered sequence of the elements and their *ID* is valid, that
           is:
+
             - the sequence of :attr:`.Word.index` starts from ``1`` and
               progressively increases by 1 step;
             - there are no *index* duplicates or range overlapping;
@@ -150,6 +151,7 @@ class Sentence:
               before the first :class:`.Word` included in their *index* range,
               and each range always cover existing :class:`.Word` elements in
               the sentence;
+
         - if one or more :attr:`.Word.head` values are set (not ``None``), each
           head must refer to the *index* of a :class:`.Word` existing within
           the sentence, or at least be equal to zero (``0``, for ``root``
