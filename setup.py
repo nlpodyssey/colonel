@@ -23,7 +23,7 @@ with open(path.join(base_path, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='colonel',
-    version='1.1.0',
+    version='1.1.1',
     license='Apache-2.0',
     description='A Python 3 library for handling CoNLL data formats',
     long_description=long_description,

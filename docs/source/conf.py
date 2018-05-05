@@ -24,9 +24,9 @@ copyright = '2018, The NLP Odyssey Authors'
 author = 'The NLP Odyssey Authors'
 
 # The short X.Y version
-version = ''
+version = '1.1'
 # The full version, including alpha/beta/rc tags
-release = ''
+release = '1.1.1'
 
 
 # -- General configuration ---------------------------------------------------

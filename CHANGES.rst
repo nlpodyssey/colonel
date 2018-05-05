@@ -2,6 +2,20 @@ Colonel Changelog
 =================
 
 
+v1.1.1
+------
+
+Fixes and housekeeping
+^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed missing version in sphinx configuration script
+- Updated sphinx documentation, better showing modules and packages and
+  defining a meaningful TOC
+- Upgraded sphinx related development dependencies
+- Upgraded mypy development dependency to version `0.600` and fixed some new
+  related minor complaints
+
+
 v1.1.0
 ------
 
