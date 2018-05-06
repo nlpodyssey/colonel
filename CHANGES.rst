@@ -2,8 +2,8 @@ Colonel Changelog
 =================
 
 
-To be released
---------------
+v1.2.0
+------
 
 New features
 ^^^^^^^^^^^^
