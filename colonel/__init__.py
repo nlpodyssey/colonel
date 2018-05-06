@@ -14,3 +14,19 @@
 # limitations under the License.
 
 """Colonel - a Python 3 library for handling CoNLL data formats"""
+
+from colonel.sentence import Sentence
+from colonel.word import Word
+from colonel.emptynode import EmptyNode
+from colonel.multiword import Multiword
+from colonel.upostag import UposTag
+from colonel import conllu
+
+__all__ = [
+    'Sentence',
+    'Word',
+    'EmptyNode',
+    'Multiword',
+    'UposTag',
+    'conllu'
+]

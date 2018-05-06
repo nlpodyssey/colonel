@@ -2,6 +2,17 @@ Colonel Changelog
 =================
 
 
+To be released
+--------------
+
+New features
+^^^^^^^^^^^^
+
+- Added direct access from the root package to the main classes, including
+  `Sentence`, sentence elements and `UposTag` (also refer to the newly
+  introduced `colonel.__all__`)
+
+
 v1.1.1
 ------
 
