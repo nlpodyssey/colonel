@@ -16,6 +16,7 @@ Development-related
 - Start using `+dev` local version label to identify the development version.
 - `mypy` has been updated to version `0.641`.
 - `pylint` has been updated to version `2.1.1` and code refactored accordingly.
+- `sphinx-rtd-theme` has been updated to version `0.4.2`.
 
 
 v1.2.0
