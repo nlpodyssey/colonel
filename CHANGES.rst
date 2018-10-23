@@ -4,11 +4,14 @@ Colonel Changelog
 Unreleased
 ----------
 
+
+v2.0.0
+----------
+
 Breaking changes
 ^^^^^^^^^^^^^^^^
 
 - The minimum Python requirement has been updated to version `3.7`.
-
 
 Development-related
 ^^^^^^^^^^^^^^^^^^^
