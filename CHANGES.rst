@@ -15,7 +15,7 @@ Development-related
 
 - Start using `+dev` local version label to identify the development version.
 - `mypy` has been updated to version `0.641`.
-- `pylint` has been updated to version `2.1.1`.
+- `pylint` has been updated to version `2.1.1` and code refactored accordingly.
 
 
 v1.2.0

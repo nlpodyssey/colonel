@@ -108,9 +108,11 @@ class BaseRichSentenceElement(BaseSentenceElement):
 
         if not self.feats:
             return '_'
-        elif isinstance(self.feats, str):
+
+        if isinstance(self.feats, str):
             return self.feats
-        elif isinstance(self.feats, tuple):
+
+        if isinstance(self.feats, tuple):
             return '|'.join(
                 f'{feat[0]}={",".join(feat[1])}' for feat in self.feats)
 
@@ -132,9 +134,11 @@ class BaseRichSentenceElement(BaseSentenceElement):
 
         if not self.deps:
             return '_'
-        elif isinstance(self.deps, str):
+
+        if isinstance(self.deps, str):
             return self.deps
-        elif isinstance(self.deps, tuple):
+
+        if isinstance(self.deps, tuple):
             return '|'.join(
                 f'{dep[0]}:{dep[1]}' for dep in self.deps)
 

@@ -236,12 +236,12 @@ class Sentence:
             return elem.index == index + 1 and \
                    self._sequence_is_valid(position + 1, elem.index)
 
-        elif isinstance(elem, Multiword):
+        if isinstance(elem, Multiword):
             return elem.first_index == index + 1 and \
                    self._has_word_with_index(elem.last_index or 0) and \
                    self._sequence_is_valid(position + 1, index)
 
-        elif isinstance(elem, EmptyNode):
+        if isinstance(elem, EmptyNode):
             return elem.main_index == index and \
                    elem.sub_index == sub_index + 1 and \
                    self._sequence_is_valid(position + 1, index, elem.sub_index)
