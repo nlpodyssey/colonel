@@ -49,6 +49,8 @@ setup(
     ],
     keywords='conll conllu dependency parsing',
     packages=find_packages(exclude=['tests', 'tests.*']),
+    package_data={'colonel': ['py.typed']},
+    zip_safe=False,
     python_requires='>=3.7, <4',
     install_requires=[
         'ply>=3,<4'
