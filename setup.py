@@ -38,7 +38,7 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
         'Topic :: Scientific/Engineering :: Human Machine Interfaces',
@@ -49,7 +49,7 @@ setup(
     ],
     keywords='conll conllu dependency parsing',
     packages=find_packages(exclude=['tests', 'tests.*']),
-    python_requires='>=3.6, <4',
+    python_requires='>=3.7, <4',
     install_requires=[
         'ply>=3,<4'
     ]
