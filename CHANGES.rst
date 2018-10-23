@@ -1,6 +1,14 @@
 Colonel Changelog
 =================
 
+Unreleased
+----------
+
+Development-related
+^^^^^^^^^^^^^^^^^^^
+
+- Start using `+dev` local version label to identify the development version.
+
 
 v1.2.0
 ------
