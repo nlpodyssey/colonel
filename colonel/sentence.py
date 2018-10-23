@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Module providing the :class:`.Sentence` class."""
+"""Module providing the :class:`colonel.Sentence` class."""
 
 from typing import Optional, List, Iterator, Union
 from colonel.base_sentence_element import BaseSentenceElement
@@ -35,8 +35,8 @@ class Sentence:
 
     Analogously, here a :class:`Sentence` mostly consists of an ordered list of
     :attr:`elements`, which can be object of any
-    :class:`.BaseSentenceElement`'s subclass, commonly a :class:`.Word`, a
-    :class:`.Multiword` or an :class:`.EmptyNode`.
+    :class:`.BaseSentenceElement`'s subclass, commonly a :class:`colonel.Word`,
+    a :class:`colonel.Multiword` or an :class:`colonel.EmptyNode`.
 
     Since the *CoNLL-U* format allows the presence of comment lines before a
     sentence, the :attr:`comments` attribute is made available here as a simple
@@ -78,11 +78,11 @@ class Sentence:
     def words(self) -> Iterator[Word]:
         """Extracts the sequence of words.
 
-        Iterates through :attr:`elements` and yields :class:`.Word` elements
-        only. This can be especially handy in many dependency parsing contexts,
-        where the focus mostly resides among simple words and their relations,
-        ignoring the additional information carried by *empty nodes* and
-        *(multiword) tokens*.
+        Iterates through :attr:`elements` and yields :class:`colonel.Word`
+        elements only. This can be especially handy in many dependency parsing
+        contexts, where the focus mostly resides among simple words and their
+        relations, ignoring the additional information carried by *empty nodes*
+        and *(multiword) tokens*.
 
         This method do not perform any validity check among the elements, so if
         you want to ensure valid and meaningful results, please refer to
@@ -99,9 +99,9 @@ class Sentence:
 
         Iterates through :attr:`elements` and yields the only elements which
         represent the raw sequence of tokens in the sentence. The result
-        includes :class:`.Word` and :class:`.Multiword` elements,
-        skipping all :class:`.Word` items which indexes are included in the
-        range of a preceding :class:`.MultiWord`.
+        includes :class:`colonel.Word` and :class:`colonel.Multiword` elements,
+        skipping all :class:`colonel.Word` items which indexes are included in
+        the range of a preceding :class:`colonel.MultiWord`.
 
         Empty nodes are ignored.
 
@@ -138,24 +138,25 @@ class Sentence:
         - the ordered sequence of the elements and their *ID* is valid, that
           is:
 
-            - the sequence of :attr:`.Word.index` starts from ``1`` and
+            - the sequence of :attr:`colonel.Word.index` starts from ``1`` and
               progressively increases by 1 step;
             - there are no *index* duplicates or range overlapping;
-            - the :class:`.EmptyNode` elements (if any) are correctly placed
-              after the :class:`.Word` element related to their
-              :attr:`.EmptyNode.main_index` (or before the first word of the
-              sentence, when the *main index* is zero), and for each sequence
-              of *empty nodes* their :attr:`.EmptyNode.sub_index` starts from
-              ``1`` and progressively increases by 1 step;
-            - the :class:`.Multiword` elements (if any) are correctly placed
-              before the first :class:`.Word` included in their *index* range,
-              and each range always cover existing :class:`.Word` elements in
-              the sentence;
+            - the :class:`colonel.EmptyNode` elements (if any) are correctly
+              placed after the :class:`colonel.Word` element related to their
+              :attr:`colonel.EmptyNode.main_index` (or before the first word of
+              the sentence, when the *main index* is zero), and for each
+              sequence of *empty nodes* their
+              :attr:`colonel.EmptyNode.sub_index` starts from ``1`` and
+              progressively increases by 1 step;
+            - the :class:`colonel.Multiword` elements (if any) are correctly
+              placed before the first :class:`colonel.Word` included in their
+              *index* range, and each range always cover existing
+              :class:`colonel.Word` elements in the sentence;
 
-        - if one or more :attr:`.Word.head` values are set (not ``None``), each
-          head must refer to the *index* of a :class:`.Word` existing within
-          the sentence, or at least be equal to zero (``0``, for ``root``
-          grammatical relations).
+        - if one or more :attr:`colonel.Word.head` values are set (not
+          ``None``), each head must refer to the *index* of a
+          :class:`colonel.Word` existing within the sentence, or at least be
+          equal to zero (``0``, for ``root`` grammatical relations).
         """
         return any(self.words()) and \
             self._all_elements_are_valid() and \
@@ -192,7 +193,7 @@ class Sentence:
 
     def _no_indexes_overlap(self):
         """Returns whether or not there are overlaps among the *index* ranges
-        of :class:`.Multiword` elements (if any).
+        of :class:`colonel.Multiword` elements (if any).
 
         This is a helper method for :meth:`is_valid`; it must be called only
         if all the of :attr:`elements` are valid (evaluated separately invoking
@@ -259,16 +260,16 @@ class Sentence:
 
         A head is considered valid only if its value is either not set
         (``None``), equals to zero (``0``, for ``root``grammatical relations),
-        or less than or equal to the *index* of the last :class:`.Word` within
-        the sentence.
+        or less than or equal to the *index* of the last :class:`colonel.Word`
+        within the sentence.
         """
         words = list(self.words())
         last_index = words[-1].index or 0
         return all(0 <= (word.head or 0) <= last_index for word in words)
 
     def _has_word_with_index(self, index: int) -> bool:
-        """Returns whether or not :meth:`elements` contains a :class:`.Word`
-        element with the given *index*.
+        """Returns whether or not :meth:`elements` contains a
+        :class:`colonel.Word` element with the given *index*.
         """
         return any(word.index == index for word in self.words())
 

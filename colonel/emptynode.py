@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Module providing the :class:`.EmptyNode` class."""
+"""Module providing the :class:`colonel.EmptyNode` class."""
 
 from typing import Optional
 from colonel.base_rich_sentence_element import BaseRichSentenceElement
@@ -36,10 +36,10 @@ class EmptyNode(BaseRichSentenceElement):
 
         #: The primary index of the empty node.
         #:
-        #: This usually corresponds to the value of the :attr:`.Word.index`
-        #: after which the empty node is inserted, or to zero (``0``) if the
-        #: empty node is inserted before the first word of the sentence (the
-        #: one with *index* equal to ``1``).
+        #: This usually corresponds to the value of the
+        #: :attr:`colonel.Word.index` after which the empty node is inserted,
+        #: or to zero (``0``) if the empty node is inserted before the first
+        #: word of the sentence (the one with *index* equal to ``1``).
         #:
         #: It is compatible with *CoNLL-U* ``ID`` field, which in case of an
         #: empty node is a decimal number: the *main index* here corresponds
@@ -59,9 +59,10 @@ class EmptyNode(BaseRichSentenceElement):
         itself is possibly inserted.
 
         In compliance with the *CoNLL-U* format, an instance of type
-        :class:`.EmptyNode` is considered valid only when :attr:`main_index` is
-        set to a value equal to or greater than zero (``0``) **and**
-        :attr:`sub_index` is set to a value greater than zero (``0``).
+        :class:`colonel.EmptyNode` is considered valid only when
+        :attr:`main_index` is set to a value equal to or greater than zero
+        (``0``) **and** :attr:`sub_index` is set to a value greater than zero
+        (``0``).
         """
         return super(EmptyNode, self).is_valid() and \
             self.main_index is not None and self.main_index >= 0 and \

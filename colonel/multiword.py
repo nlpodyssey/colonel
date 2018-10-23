@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Module providing the :class:`.Multiword` class."""
+"""Module providing the :class:`colonel.Multiword` class."""
 
 from typing import Optional
 from colonel.base_sentence_element import BaseSentenceElement
@@ -36,8 +36,9 @@ class Multiword(BaseSentenceElement):
 
         #: The first word index (inclusive) covered by the multiword token.
         #:
-        #: This usually corresponds to the value of the :attr:`.Word.index`
-        #: of the first :class:`.Word` which is part of this multiword token.
+        #: This usually corresponds to the value of the
+        #: :attr:`colonel.Word.index` of the first :class:`colonel.Word` which
+        #: is part of this multiword token.
         #:
         #: It is compatible with *CoNLL-U* ``ID`` field, which in case of a
         #: multiword token is a range of integer numbers, where first and last
@@ -47,8 +48,9 @@ class Multiword(BaseSentenceElement):
 
         #: The last word index (inclusive) covered by the multiword token.
         #:
-        #: This usually corresponds to the value of the :attr:`.Word.index`
-        #: of the last :class:`.Word` which is part of this multiword token.
+        #: This usually corresponds to the value of the
+        #: :attr:`colonel.Word.index` of the last :class:`colonel.Word` which
+        #: is part of this multiword token.
         #:
         #: It is compatible with *CoNLL-U* ``ID`` field, which in case of a
         #: multiword token is a range of integer numbers, where first and last
@@ -62,8 +64,8 @@ class Multiword(BaseSentenceElement):
         itself is possibly inserted.
 
         In compliance with the *CoNLL-U* format, an instance of type
-        :class:`.Multiword` is considered valid only when :attr:`first_index`
-        is set to a value greater than zero (``0``) **and**
+        :class:`colonel.Multiword` is considered valid only when
+        :attr:`first_index` is set to a value greater than zero (``0``) **and**
         :attr:`last_index` is set to a value greater than :attr:`first_index`.
         """
         return super(Multiword, self).is_valid() and \

@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Module providing the :class:`.Word` class."""
+"""Module providing the :class:`colonel.Word` class."""
 
 from typing import Optional
 from colonel.base_rich_sentence_element import BaseRichSentenceElement
@@ -64,8 +64,8 @@ class Word(BaseRichSentenceElement):
         itself is possibly inserted.
 
         In compliance with the *CoNLL-U* format, an instance of type
-        :class:`.Word` is considered valid only when :attr:`index` is set to a
-        value greater than zero (``0``).
+        :class:`colonel.Word` is considered valid only when :attr:`index` is
+        set to a value greater than zero (``0``).
         """
         return super(Word, self).is_valid() and \
             self.index is not None and self.index > 0

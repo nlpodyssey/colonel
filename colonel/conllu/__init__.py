@@ -21,7 +21,7 @@ under the hood.
 
 In more detail, this package provides a lexical analyzer (see :mod:`.lexer`)
 and a parser (see :mod:`.parser`) to transform the raw string input into
-related :class:`.Sentence` objects.
+related :class:`colonel.Sentence` objects.
 
 Lexer and parser classes are implemented taking advantage of the *PLY
 (Python Lex-Yacc)* library; you can learn more from the
@@ -43,7 +43,7 @@ def parse(content: str) -> List[Sentence]:
         breaking the rules of the *CoNLL-U* parser
 
     :param content: *CoNLL-U* formatted string to be parsed
-    :return: list of parsed :class:`.Sentence` items
+    :return: list of parsed :class:`colonel.Sentence` items
     """
     return ConlluParserBuilder.build().parse(content)
 
@@ -56,7 +56,7 @@ def to_conllu(sentences: List[Sentence]) -> str:
     sentences and elements not compatible with *CoNLL-U* format could lead to
     an incorrect output value or raising of exceptions.
 
-    :param sentences: list of :class:`.Sentence` items
+    :param sentences: list of :class:`colonel.Sentence` items
     :return: a *CoNLL-U* formatted representation of the sentences
     """
     return ''.join(sentence.to_conllu() for sentence in sentences)
