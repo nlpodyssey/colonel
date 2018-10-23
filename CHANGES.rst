@@ -14,6 +14,7 @@ Development-related
 ^^^^^^^^^^^^^^^^^^^
 
 - Start using `+dev` local version label to identify the development version.
+- `mypy` has been updated to version `0.641`.
 
 
 v1.2.0
