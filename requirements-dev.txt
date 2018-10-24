@@ -1,6 +1,6 @@
 -r requirements.txt
 coverage==4.5.1
-flake8==3.5.0
+flake8==3.6.0
 mypy==0.641
 pylint==2.1.1
 sphinx==1.8.1

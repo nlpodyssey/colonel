@@ -12,6 +12,11 @@ New features
   (this feature was already present in ``v2.0.0``, but was left undocumented
   in this changelog by mistake).
 
+Development-related
+^^^^^^^^^^^^^^^^^^^
+
+- `flake8` has been updated to version `3.6.0`.
+
 
 v2.0.0
 ------
