@@ -4,9 +4,17 @@ Colonel Changelog
 Unreleased
 ----------
 
+New features
+^^^^^^^^^^^^
+
+- The project is now `PEP 561 <https://www.python.org/dev/peps/pep-0561/>`_
+  compatible, thanks to the addition of the ``py.typed`` file to the package
+  (this feature was already present in ``v2.0.0``, but was left undocumented
+  in this changelog by mistake).
+
 
 v2.0.0
-----------
+------
 
 Breaking changes
 ^^^^^^^^^^^^^^^^
