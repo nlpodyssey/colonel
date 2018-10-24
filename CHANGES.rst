@@ -4,6 +4,10 @@ Colonel Changelog
 Unreleased
 ----------
 
+
+v2.0.1
+------
+
 New features
 ^^^^^^^^^^^^
 
